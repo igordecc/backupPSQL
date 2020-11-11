@@ -1,0 +1,1 @@
+for %%A in (list, list2) do echo la
