@@ -2,7 +2,7 @@
 
 setlocal
 
-rem Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð±Ð°Ð·Ñ‹
+rem Óñòàíîâêà ïàðàìåòðîâ êîïèðîâàíèÿ áàçû
 
 SET VPGBIN=C:\Program Files\PostgreSQL\9.5\bin
 
@@ -10,17 +10,17 @@ set VPGHOST=localhost
 set VPGPORT=5432
 set VPGUSER=postgres
 
-rem -----Ð—Ð´ÐµÑÑŒ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð° Ð·Ð°Ð¼ÐµÐ½Ð° Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ð¹ Ð¿Ð°Ñ€Ð¾Ð»Ñ
+rem -----Çäåñü âîçìîæíà çàìåíà ïåðåìåííîé ïàðîëÿ
 
 rem set PGPASSWORD=napusoVelbom3!
 set VPGPASSWORD=no-password
 set VPGFORMAT=custom
-rem Ð˜Ð¼Ñ Ð±Ð°Ð·Ñ‹ Ð´Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¹ Ð´ÐµÐ»Ð°ÐµÑ‚ÑÑ Ñ€ÐµÐ·ÐµÑ€Ð²Ð½Ð°Ñ ÐºÐ¾Ð¿Ð¸Ñ
-set NAMEBASE=GKO_OKS_2019
-rem Ð˜Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð° Ð±ÑÐºÐ°Ð¿Ð° Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð´ÐµÐ»Ð°ÐµÑ‚ÑÑ Ñ€ÐµÐ·ÐµÑ€Ð²Ð½Ð°Ñ ÐºÐ¾Ð¿Ð¸Ñ
+rem Èìÿ áàçû äëÿ êîòîðîé äåëàåòñÿ ðåçåðâíàÿ êîïèÿ
+set NAMEBASE=ZNPv3_2
+rem Èìÿ ôàéëà áýêàïà â êîòîðûé äåëàåòñÿ ðåçåðâíàÿ êîïèÿ
 set NAMEFILE=%NAMEBASE%_
 
-rem Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ… ÑÐµÑ‚ÐµÐ²Ð¾Ð³Ð¾ Ð¾ÐºÑ€ÑƒÐ¶ÐµÐ½Ð¸Ñ
+rem Óñòàíîâêà ïåðåìåííûõ ñåòåâîãî îêðóæåíèÿ
 
 set VBACKUP_RESURS=\\1408\backup
 set VCATALOG_BACKUP=Postgres_Test
@@ -28,28 +28,28 @@ set VDISK=r:
 set NAME_USER=admgko
 set PASSWORD_USER=K!123456
 
-rem ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº ÑÐµÑ‚ÐµÐ²Ð¾Ð¼Ñƒ Ñ€ÐµÑÑƒÑ€ÑÑƒ, ÑÐµÑ‚ÐµÐ²Ð¾Ð¹ Ñ€ÐµÑÑƒÑ€Ñ Ð±ÑÐºÐ°Ð¿Ð° Ð±Ð°Ð·Ñ‹ Ð²ÑÐµÐ³Ð´Ð° Ð¼Ð¾Ð½Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ ÐºÐ°Ðº ÑÐµÑ‚ÐµÐ²Ð¾Ð¹ Ð´Ð¸ÑÐº R
+rem Ïðîâåðêà ïîäêëþ÷åíèÿ ê ñåòåâîìó ðåñóðñó, ñåòåâîé ðåñóðñ áýêàïà áàçû âñåãäà ìîíòèðóåòñÿ êàê ñåòåâîé äèñê R
 dir %VDISK%
 if not %ERRORLEVEL%==0 net use %VDISK% %VBACKUP_RESURS% /user:%NAME_USER% %PASSWORD_USER%
 if not %ERRORLEVEL%==0 goto UPS1
 set VDISK=%VDISK%\
 cd /d %VDISK%
 
-rem Ð•ÑÐ»Ð¸ Ð½Ð° Ñ€ÐµÑÑƒÑ€ÑÐµ Ð½ÐµÑ‚ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° Ð´Ð»Ñ Ñ€ÐµÐ·ÐµÑ€Ð²Ð½Ð¾Ð³Ð¾ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ - ÐµÐ³Ð¾ ÑÐ¾Ð·Ð´Ð°ÐµÐ¼
+rem Åñëè íà ðåñóðñå íåò êàòàëîãà äëÿ ðåçåðâíîãî êîïèðîâàíèÿ - åãî ñîçäàåì
 if not exist %VCATALOG_BACKUP% md %VCATALOG_BACKUP%
 set VCATALOG_BACKUP=%VDISK%%VCATALOG_BACKUP%
 cd %VCATALOG_BACKUP%
 
-rem ÐŸÐµÑ€ÐµÑ…Ð¾Ð´ Ð² ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³ Ð±ÑÐºÐ°Ð¿Ð° (VCATALOG_BACKUP) Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ñ Ð¿Ð°Ð¿Ð¾Ðº ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ñ… Ð³Ð¾Ð´Ñƒ Ð¸ Ð¼ÐµÑÑÑ†Ñƒ
+rem Ïåðåõîä â êàòàëîã áýêàïà (VCATALOG_BACKUP) ïðîâåðêà íàëè÷èÿ ïàïîê ñîîòâåòñòâóþùèõ ãîäó è ìåñÿöó
 
-rem ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¸ Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ð°Ð¿ÐºÐ¸ Ð“ÐžÐ”
+rem Ïðîâåðêà è ôîðìèðîâàíèå ïàïêè ÃÎÄ
 set SLASH=\
 set VYEAR=%date:~-4%
 set VCATYEAR=%VCATALOG_BACKUP%%SLASH%%VYEAR%
 if not exist %VCATYEAR% md %VCATYEAR%
 cd %VCATYEAR%
 
-rem ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¸ Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ð°Ð¿ÐºÐ¸ ÐœÐ•Ð¡Ð¯Ð¦ Ð² Ð¿Ð°Ð¿ÐºÐµ Ð“ÐžÐ”
+rem Ïðîâåðêà è ôîðìèðîâàíèå ïàïêè ÌÅÑßÖ â ïàïêå ÃÎÄ
 set SLASH=\
 set VMONTH=%date:~-7%
 set VMONTH2=%VMONTH:~0,2%
@@ -57,7 +57,7 @@ if not exist %VMONTH2% md %VMONTH2%
 set VCATMONTH=%VCATYEAR%%SLASH%%VMONTH2%
 cd %VCATMONTH%
 
-rem Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¸Ð¼ÐµÐ½Ð¸ Ñ„Ð°Ð¹Ð»Ð° Ð±ÑÐºÐ°Ð¿Ð° Ñ Ð¿Ñ€Ð¸Ð²ÑÐ·ÐºÐ¾Ð¹ Ðº Ð´Ð°Ñ‚Ðµ Ð¸ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸
+rem Ôîðìèðîâàíèå èìåíè ôàéëà áýêàïà ñ ïðèâÿçêîé ê äàòå è âðåìåíè
 set VDATE=%date:~-10%
 set VTIME=%time:~0,-3%
 set VTIME=%VTIME::=.%
@@ -65,33 +65,30 @@ set VTIME=%VTIME: =%
 set TYPEFILE=.backup
 set VNAMEFILE=%NAMEFILE%%VDATE%_%VTIME%%TYPEFILE%
 
-echo %VNAMEFILE%
-
-rem Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¿Ð¾Ð»Ð½Ð¾Ð³Ð¾ Ð¸Ð¼ÐµÐ½Ð¸ Ñ„Ð°Ð¹Ð»Ð° Ð±ÑÐºÐ°Ð¿Ð°
+rem Ñîçäàíèå ïîëíîãî èìåíè ôàéëà áýêàïà
 set VNAMEFILE=%VCATMONTH%%SLASH%%VNAMEFILE%
 
-rem Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¸Ð¼ÐµÐ½Ð¸ Ð»Ð¾Ð³-Ñ„Ð°Ð¹Ð»Ð° Ñ Ð¿Ñ€Ð¸Ð²ÑÐ·ÐºÐ¾Ð¹ Ðº Ð´Ð°Ñ‚Ðµ Ð¸ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸
+rem Ñîçäàíèå èìåíè ëîã-ôàéëà ñ ïðèâÿçêîé ê äàòå è âðåìåíè
 set LOGNAME=backuplog_
 set LOGTYPE=.txt
 set LOGNAME=%LOGNAME%%VDATE%_%VTIME%%LOGTYPE%
-rem Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¿Ð¾Ð»Ð½Ð¾Ð³Ð¾ Ð¸Ð¼ÐµÐ½Ð¸ Ð»Ð¾Ð³-Ñ„Ð°Ð¹Ð»Ð°
+rem Ñîçäàíèå ïîëíîãî èìåíè ëîã-ôàéëà
 set LOGNAME=%VCATMONTH%%SLASH%%LOGNAME%
 
 echo --------------------------- begin copy base
-rem ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð±Ð°Ð·Ñ‹
-
+rem Êîïèðîâàíèå áàçû
 call "%VPGBIN%\pg_dump.exe" --host %VPGHOST% --port %VPGPORT% --username "%VPGUSER%" --%VPGPASSWORD% --format %VPGFORMAT% --blobs --verbose --file "%VNAMEFILE%" "%NAMEBASE%"  2>%LOGNAME%
 
-rem ÐÐ½Ð°Ð»Ð¸Ð· ÐºÐ¾Ð´Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ, Ð² ÑÐ»ÑƒÑ‡Ð°Ðµ Ð¾ÑˆÐ¸Ð±ÐºÐ¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð° Ñ ÐºÐ¾Ð´Ð¾Ð¼ Ð¾ÑˆÐ¸Ð±ÐºÐ¸ Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð¿Ð¾Ð²Ñ€ÐµÐ¶Ð´ÐµÐ½Ð½Ð¾Ð¹ ÐºÐ¾Ð¿Ð¸Ð¸
+rem Àíàëèç êîäà çàâåðøåíèÿ, â ñëó÷àå îøèáêè ñîçäàíèå ôàéëà ñ êîäîì îøèáêè è óäàëåíèå ïîâðåæäåííîé êîïèè
 IF NOT %ERRORLEVEL%==0 GOTO ErrorBackup
 GOTO OkBackup
 :ErrorBackup
 set ERROR_TEXT=%ERRORLEVEL%
-rem Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¸Ð¼ÐµÐ½Ð¸ Ñ„Ð°Ð¹Ð»Ð° Ñ ÐºÐ¾Ð´Ð¾Ð¼ Ð¾ÑˆÐ¸Ð±ÐºÐ¸ Ñ Ð¿Ñ€Ð¸Ð²ÑÐ·ÐºÐ¾Ð¹ Ðº Ð´Ð°Ñ‚Ðµ Ð¸ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸
+rem Ñîçäàíèå èìåíè ôàéëà ñ êîäîì îøèáêè ñ ïðèâÿçêîé ê äàòå è âðåìåíè
 set ERRORNAME=errorcode_
 set ERRORTYPE=.txt
 set ERRTXT=%ERRORNAME%%VDATE%_%VTIME%%ERRORTYPE%
-rem Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¿Ð¾Ð»Ð½Ð¾Ð³Ð¾ Ð¸Ð¼ÐµÐ½Ð¸ Ñ„Ð°Ð¹Ð»Ð° Ñ ÐºÐ¾Ð´Ð¾Ð¼ Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+rem Ñîçäàíèå ïîëíîãî èìåíè ôàéëà ñ êîäîì îøèáêè
 set ERRTXT=%VCATMONTH%%SLASH%%ERRTXT%
 echo %EERROR_TEXT% > %ERRTXT%
 del %VNAMEFILE%
